@@ -131,6 +131,15 @@ const watchLocalPaths = (localDeps, filterFn) => {
 }
 
 
+const geAllPathsGitIgnores = (allDeps) => {
+  return allDeps.map(dep => {
+    const gitignore = parser.compile(fs.readFileSync(//TODO'.gitignore', 'utf8'));
+    dep.gitIgnoreAccepts = (path) => gitignore.accepts(path.replace(dep.modulePath, ''));
+    return dep;
+  })
+}
+
+
 
 let depAnalysis = {
   pkgJson: getPackageJSON(),
