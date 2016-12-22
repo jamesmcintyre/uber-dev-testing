@@ -136,7 +136,7 @@ let depAnalysis = {
   pkgJson: getPackageJSON(),
   onlyRootDependencies: getDependancies(getPackageJSON()),
   localDependencies: [],
-  watchFileFilter: gitignore.accepts,
+  watchFileFilter: gitignore.accepts, //TODO: refact to take path to remove and run correct match, also maybe instantiate a unique fn for each repo/gitignore
   watchLocalPaths
 };
 
